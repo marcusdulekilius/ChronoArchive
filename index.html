@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoArchive</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ChronoArchive</h1>
+        </header>
+        <main>
+            <form method="POST" class="chat-form">
+                <label for="soru">Wikipedia'dan beslenen bir arşiv yapay zekası</label><br>
+                <input type="text" id="soru" name="soru" required><br>
+                <button type="submit">Soru Sor</button>
+            </form>
+            <div class="chat-response">
+                {% for soru, cevap in sorular_cevaplar %}
+                    <div class="response-item">
+                        <h3>{{ soru }}</h3>
+                        <p>{{ cevap }}</p>
+                        <hr>
+                    </div>
+                {% endfor %}
+            </div>
+        </main>
+        <footer>
+            <p>An AI ChatBot by Marcus D.</p>
+        </footer>
+    </div>
+</body>
+</html>
