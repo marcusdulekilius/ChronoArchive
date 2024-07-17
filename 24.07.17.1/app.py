@@ -4,8 +4,9 @@ import requests
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 
-API_KEY = 'YOUR-API-LINK'
-CSE_ID = 'YOUR CSE-ID'
+# API ve CSE
+API_KEY = 'your-google-api-key'
+CSE_ID = 'your-cse-id'
 
 def internet_cevap(soru):
     try:
@@ -19,12 +20,12 @@ def internet_cevap(soru):
         response = requests.get("https://www.googleapis.com/customsearch/v1", params=params)
         data = response.json()
         if 'items' in data:
-            # İlk sonucu al
+            # İlk sonucu alalım
             first_result = data['items'][0]
             title = first_result['title']
             snippet = first_result['snippet']
             link = first_result['link']
-            return f"{title}\n\n{snippet}\n\nDaha fazla bilgi için [buraya]({link}) tıklayın."
+            return f"{title}\n\n{snippet}\n\nDetaylı bilgi için link: {link}"
         else:
             return "Üzgünüm, bu konuda bilgim yok."
     except Exception as e:
