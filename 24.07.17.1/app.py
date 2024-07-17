@@ -4,8 +4,8 @@ import requests
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 
-API_KEY = 'AIzaSyB3NWMlpocbJjU32Ui_hrKm0uQBxzpn_dY'
-CSE_ID = '7693fbcc67fd3425a'
+API_KEY = 'YOUR-API-LINK'
+CSE_ID = 'YOUR CSE-ID'
 
 def internet_cevap(soru):
     try:
@@ -19,7 +19,7 @@ def internet_cevap(soru):
         response = requests.get("https://www.googleapis.com/customsearch/v1", params=params)
         data = response.json()
         if 'items' in data:
-            # İlk sonucu alalım
+            # İlk sonucu al
             first_result = data['items'][0]
             title = first_result['title']
             snippet = first_result['snippet']
