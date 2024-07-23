@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏛️ ChronoArchive</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    
+</head>
+<body class="light-theme">
+    <header>
+        <div class="login">
+            <label class="profile-icon" id="loginLink"> Gir </label>
+        </div>
+        <h1>ChronoArchive</h1>
+        <div class="theme-switch">
+            <label class="switch">
+                <input type="checkbox" id="themeSlider">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </header>
+    <main>
+        <form id="chat-form" method="POST" class="chat-form">
+            <label for="soru">Bilgiyle beslenen bir arşiv yapay zekası</label><br>
+            <input type="text" id="soru" name="soru" required><br>
+        </form>
+        <div class="chat-response">
+            {% for soru, cevap in sorular_cevaplar %}
+                <div class="response-item">
+                    <h3>{{ soru }}</h3>
+                    {% for line in cevap.split('\n\n') %}
+                        <p>{{ line }}</p>
+                    {% endfor %}
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+    <footer>
+        <p>An AI ChatBot by Marcus D.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form class="modal-form">
+                <label for="username">Kullanıcı Adı:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Şifre:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Giriş Yap</button>
+                <div class="register-link">
+                    <button type="/register">Kayıt Ol</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
