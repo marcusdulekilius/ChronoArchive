@@ -11,16 +11,6 @@ body {
     height: 100%;
 }
 
-body.light-theme {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-body.dark-theme {
-    background-color: #000000;
-    color: #ffffff;
-}
-
 .login {
     position: absolute;
     top: 1rem;
@@ -32,10 +22,6 @@ body.dark-theme {
     color: inherit;
     font-size: 1rem;
     font-weight: bold;
-}
-
-.theme-switch {
-    margin-left: auto;
 }
 
 header {
