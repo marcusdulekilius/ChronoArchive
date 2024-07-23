@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏛️ ChronoArchive</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="light-theme">
+    <header>
+        <h1>ChronoArchive</h1>
+        <div class="theme-switch">
+            <label class="switch">
+                <input type="checkbox" id="themeSlider">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </header>
+    <main>
+        <form id="chat-form" method="POST" class="chat-form">
+            <label for="soru">Bilgiyle beslenen bir arşiv yapay zekası</label><br>
+            <input type="text" id="soru" name="soru" required><br>
+        </form>
+        <div class="chat-response">
+            {% for soru, cevap in sorular_cevaplar %}
+                <div class="response-item">
+                    <h3>{{ soru }}</h3>
+                    {% for line in cevap.split('\n\n') %}
+                        <p>{{ line }}</p>
+                    {% endfor %}
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+    <footer>
+        <p>An AI ChatBot by Marcus D.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('chat-form');
+            var inputField = document.getElementById('soru');
+            var slider = document.getElementById('themeSlider');
+
+            inputField.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    form.submit();
+                }
+            });
+
+            slider.addEventListener('change', function() {
+                if (slider.checked) {
+                    document.body.classList.remove('light-theme');
+                    document.body.classList.add('dark-theme');
+                } else {
+                    document.body.classList.remove('dark-theme');
+                    document.body.classList.add('light-theme');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
